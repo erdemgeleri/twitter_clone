@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add Tweet </h1>
+<!-- method: post: Body'si var. Sunucuya bilgi göndercegımız zaman kullanırız.
+ Post ıslemlerınde ekstra parametre gönderebılırız ve parametrede görünmez
+ /get: URL'de gözükür -->
+
+<!-- 
+ CSRF NEDİR
+ -Kullanıcıların başına sıkıntı çıkarıcak bir sıkıntıdır
+ -Kullanıcıları kandırarak yapılan saldırılardır
+ -Kullanıcılara email veya wp'den link yönlendırılır.
+ -Bankanın arayüzü kopyalanır formdaki bilgiyi hacker'lar kendilerine gönderilmesini sağlarlar.
+ -Kullanıcıdan mı geliyor bizim web sitesinden mi geliyor bunu kontrol etmek en doğrusudur
+ -Kullanıcıya token vermek en mantıklısıdır
+ -Bazı yapılanmalar csrf için bazı önlemler alır.
+ -Formların içerisine {% csrf_token %} yazılması gerekmektedir.
+ -->
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container" style="width: 30%;">
+        <!-- <div class="mb-3">
+            <label for="nickname" class="form-label">Nickname</label>
+            <input type="text" class="form-control" id="nickname" name="nickname">
+        </div> -->
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <input type="text" class="form-control" id="message" name="message">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Tweet</button>
+    </div>
+</form>
+{% endblock %}
